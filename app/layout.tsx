@@ -1,11 +1,12 @@
 import { ClerkProvider } from '@clerk/nextjs'
-import { Inter } from 'next/font/google'
+import { Nunito } from 'next/font/google'
 import { UserButton } from "@clerk/nextjs";
 import { MainNav } from "@/components/main-nav";
 import { MobileNav } from "@/components/mobile-nav";
 import './globals.css'
+import { Footer } from "@/components/footer";
 
-const inter = Inter({ subsets: ['latin'] })
+const nunito = Nunito({ subsets: ['latin'] })
 
 export default function RootLayout({
   children,
@@ -15,18 +16,22 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>
-          <div className="flex min-h-screen flex-col">
-            <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-              <div className="container flex h-14 items-center">
-                <MainNav />
-                <MobileNav className="md:hidden" />
-                <div className="flex flex-1 items-center justify-end space-x-4">
-                  <UserButton afterSignOutUrl="/" />
+        <body className={nunito.className}>
+          <div className="m-6 sm:m-8">
+            <nav>
+              <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+                <div className="container flex h-14 items-center relative">
+                  <div className="absolute left-0 text-2xl font-semibold">Dustin Foret</div>
+                  <MainNav />
+                  <MobileNav className="md:hidden" />
+                  <div className="absolute right-0">
+                    <UserButton afterSignOutUrl="/" />
+                  </div>
                 </div>
-              </div>
-            </header>
+              </header>
+            </nav>
             <main className="flex-1 container py-6">{children}</main>
+            <Footer />
           </div>
         </body>
       </html>
