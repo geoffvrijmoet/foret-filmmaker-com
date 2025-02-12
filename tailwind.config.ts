@@ -10,6 +10,9 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+      fontFamily: {
+        sans: ['var(--font-grapefruit)'],
+      },
   		colors: {
   			border: "hsl(var(--border))",
   			background: "hsl(var(--background))",

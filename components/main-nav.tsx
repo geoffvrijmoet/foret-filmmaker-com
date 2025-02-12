@@ -5,15 +5,15 @@ import Link from "next/link";
 export function MainNav() {
   const items = [
     {
-      title: "Editing Reel",
-      href: "/editing-reel",
+      title: "HOME",
+      href: "/",
     },
     {
-      title: "Portfolio",
-      href: "/portfolio",
+      title: "MY WORK",
+      href: "/my-work",
     },
     {
-      title: "Contact",
+      title: "CONTACT",
       href: "/contact",
     },
   ];
@@ -25,7 +25,7 @@ export function MainNav() {
           <Link
             key={item.href}
             href={item.href}
-            className="text-sm font-medium transition-colors hover:text-primary"
+            className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
           >
             {item.title}
           </Link>
