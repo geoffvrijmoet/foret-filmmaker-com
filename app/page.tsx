@@ -55,7 +55,6 @@ export default function HomePage() {
             autoPlay
             muted
             loop
-            controls
             playsInline
           >
             <source src={videoUrl} type="video/mp4" />
