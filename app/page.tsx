@@ -8,8 +8,14 @@ type VideoType = "directed" | "edited";
 
 // Color constants for easy updating
 const COLORS = {
-  directed: "amber-400",
-  edited: "red-500",
+  directed: { 
+    color: "text-brand-green", 
+    shadow: "#71eb99"
+  },
+  edited: { 
+    color: "text-brand-yellow", 
+    shadow: "#ffffa9"
+  },
 } as const;
 
 interface PortfolioVideo {
@@ -25,25 +31,85 @@ const VideoPlayer = dynamic(() => import("@/components/video-player"), {
 });
 
 const portfolioVideos: PortfolioVideo[] = [
-  // {
-  //   id: "1",
-  //   title: "in-fine-print",
-  //   type: ["directed"],
-  //   videoId: "1I_V8uW57GDaWR-CPUhRAoA9gmUKl4go7",
-  // },
   {
-    id: "3",
-    title: "hola-nola-30-second-spec-ad",
+    id: "1",
+    title: "pl-420",
     type: ["directed"],
-    videoId: "922f5e4c6c0cdf28d5387918163e7737",
+    videoId: "23c2045bd121fa5d6189e856bcd55e5d",
   },
-
   {
     id: "2",
     title: "tcu-trailer",
     type: ["edited"],
     videoId: "68a4fe62af9c19e90b895e7d870cd240",
   },
+  {
+    id: "3",
+    title: "hola-nola-30-second-spec-ad",
+    type: ["directed"],
+    videoId: "922f5e4c6c0cdf28d5387918163e7737",
+  },
+  {
+    id: "4",
+    title: "d-reel-after-flashback",
+    type: ["directed"],
+    videoId: "c9f680d7245fb575b9bcd32c57e2e9f0",
+  },
+  {
+    id: "5",
+    title: "in-fine-print",
+    type: ["edited"],
+    videoId: "df56b53a68b24a628dc6515d07faa665",
+  },
+  {
+    id: "6",
+    title: "foret-editing-reel",
+    type: ["edited"],
+    videoId: "ce062e0fc20e023bd25efa5115a4b2f4",
+  },
+  {
+    id: "7",
+    title: "d-reel-scene-29-30",
+    type: ["directed"],
+    videoId: "1462cf37e8d47569ecb340b3d8531d67",
+  },
+  {
+    id: "8",
+    title: "20210802-dis-online",
+    type: ["edited"],
+    videoId: "6ce54b0eefff01e833ed3998c10a6510",
+  },
+  {
+    id: "9",
+    title: "just-chill-online",
+    type: ["directed"],
+    videoId: "0744a817c95d7aa9a8ece8021dabc470",
+  },
+  {
+    id: "10",
+    title: "ccm-promo",
+    type: ["edited"],
+    videoId: "30861c2ad598c2627e62562af01f4c60",
+  },
+  {
+    id: "11",
+    title: "online-unsweet",
+    type: ["directed"],
+    videoId: "de711d7ac2e1a57cf8a62277915a2f00",
+  },
+  {
+    id: "12",
+    title: "online-unsweet",
+    type: ["directed"],
+    videoId: "de711d7ac2e1a57cf8a62277915a2f00",
+  },
+
+  
+
+  
+
+  
+
 ];
 
 export default function HomePage() {
@@ -51,34 +117,34 @@ export default function HomePage() {
   const mainVideoId = "486ad295feb60d67e77f2a77d09c04c8";
 
   const getButtonStyle = (type: VideoType, selectedType: VideoType) =>
-    clsx("px-6 py-2 text-lg font-medium transition-colors", {
-      [`text-${COLORS[type]}`]: selectedType === type,
-      "text-muted-foreground hover:text-primary": selectedType !== type,
-    });
+    clsx(
+      "relative px-6 py-2 text-[60px] font-bold transition-all duration-1",
+      selectedType === type
+        ? [
+            COLORS[type].color,
+            "after:content-[attr(data-content)] after:absolute after:left-0 after:top-0 after:translate-x-[28px] after:translate-y-[10px] after:opacity-0 after:scale-105 after:-z-10",
+            type === "directed" ? "after:text-brand-green" : "after:text-brand-yellow"
+          ]
+        : "text-muted-foreground hover:text-primary"
+    );
 
-    const getRingStyle = (video: PortfolioVideo, selectedType: VideoType) =>
-      clsx(
-        "aspect-video relative rounded-lg overflow-hidden transition-all duration-300",
-        video.type.includes(selectedType) && "ring-4 ring-offset-2",
-        selectedType === "directed" && "ring-amber-400",
-        selectedType === "edited" && "ring-red-500"
-      );
+  const getRingStyle = (video: PortfolioVideo, selectedType: VideoType) =>
+    clsx(
+      "aspect-video relative rounded-lg overflow-hidden",
+      video.type.includes(selectedType) && "border-[1px]",
+      selectedType === "directed" && "border-brand-green",
+      selectedType === "edited" && "border-brand-yellow"
+    );
 
   return (
     <div className="space-y-24">
       {/* Hero Video Section (Full Width) */}
-      <div className="w-full max-w-[1920px] mx-auto">
-        <div style={{ position: "relative", width: "100%", paddingTop: "56.25%" }}>
-          <div
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-            }}
-          >
-            <VideoPlayer videoId={mainVideoId} />
+      <div className="w-full flex justify-center">
+        <div className="w-full max-w-[1080px]">
+          <div className="relative w-full pt-[56.25%]">
+            <div className="absolute top-0 left-0 w-full h-full">
+              <VideoPlayer videoId={mainVideoId} />
+            </div>
           </div>
         </div>
       </div>
@@ -92,6 +158,7 @@ export default function HomePage() {
               key={type}
               onClick={() => setSelectedType(type)}
               className={getButtonStyle(type, selectedType)}
+              data-content={type.toUpperCase()}
             >
               {type.toUpperCase()}
             </button>

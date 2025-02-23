@@ -11,9 +11,31 @@ const config: Config = {
   theme: {
   	extend: {
       fontFamily: {
-        sans: ['var(--font-grapefruit)'],
+        sans: ['var(--font-exo)'],
+      },
+	  fontWeight: {
+		extralight: "100",
+        light: "200",
+		midlight: "300",
+        normal: "400",
+		midnormal: "500",
+		semibold: "600",
+		bold: "700",
+		extrabold: "800",
+        ultrabold: "900",
       },
   		colors: {
+			brand: {
+				red: "var(--brand-red)",
+				blue: "var(--brand-blue)",
+				green: "var(--brand-green)",
+				yellow: "var(--brand-yellow)",
+				purple: "var(--brand-purple)",
+				orange: "var(--brand-orange)",
+				gray: "var(--brand-gray)",
+				white: "var(--brand-white)",
+				black: "var(--brand-black)",
+			},
   			border: "hsl(var(--border))",
   			background: "hsl(var(--background))",
   			foreground: "hsl(var(--foreground))",
@@ -30,7 +52,14 @@ const config: Config = {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+      spacing: {
+		'0.25px': '0.25px',
+        '0.5px': '0.5px',
+        '1px': '1px',
+        '2px': '2px',
+        '4px': '4px',
+      },
   	}
   },
   plugins: [animate],
