@@ -29,7 +29,6 @@ interface PortfolioVideo {
 const VideoPlayer = dynamic(() => import("@/components/video-player"), {
   ssr: false,
 });
-
 const portfolioVideos: PortfolioVideo[] = [
   {
     id: "1",
@@ -38,7 +37,7 @@ const portfolioVideos: PortfolioVideo[] = [
     videoId: "23c2045bd121fa5d6189e856bcd55e5d",
   },
   {
-    id: "2",
+    id: "2", 
     title: "tcu-trailer",
     type: ["edited"],
     videoId: "68a4fe62af9c19e90b895e7d870cd240",
@@ -46,7 +45,7 @@ const portfolioVideos: PortfolioVideo[] = [
   {
     id: "3",
     title: "hola-nola-30-second-spec-ad",
-    type: ["directed"],
+    type: ["directed"], 
     videoId: "922f5e4c6c0cdf28d5387918163e7737",
   },
   {
@@ -97,14 +96,7 @@ const portfolioVideos: PortfolioVideo[] = [
     type: ["directed"],
     videoId: "de711d7ac2e1a57cf8a62277915a2f00",
   },
-  {
-    id: "12",
-    title: "online-unsweet",
-    type: ["directed"],
-    videoId: "de711d7ac2e1a57cf8a62277915a2f00",
-  },
 
-  
 
   
 
