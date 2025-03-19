@@ -96,9 +96,9 @@ export default function HomePage() {
       {/* Portfolio Section */}
       <div className="space-y-8 relative pt-[56.25vw]">
         {/* Portfolio Video Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 max-w-7xl mx-auto px-4">
           {portfolioVideos.map((video) => (
-            <div key={video.id} className="aspect-video relative rounded-lg overflow-hidden">
+            <div key={video.id} className="aspect-video relative rounded-none overflow-hidden">
               <VideoPlayer videoId={video.videoId} />
             </div>
           ))}
