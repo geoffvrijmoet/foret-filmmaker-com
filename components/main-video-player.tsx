@@ -7,7 +7,7 @@ interface MainVideoPlayerProps {
 const MainVideoPlayer: React.FC<MainVideoPlayerProps> = ({ videoId }) => {
   return (
     <iframe
-      src={`https://customer-jot89waup74lm7h1.cloudflarestream.com/${videoId}/iframe?autoplay=true&muted=true&controls=false&loop=true&quality=high&preload=auto&maxResolution=1080p`}
+      src={`https://customer-jot89waup74lm7h1.cloudflarestream.com/${videoId}/iframe?autoplay=true&muted=true&controls=false&loop=true&quality=high&preload=high&preloadQuality=high&maxResolution=1080p`}
       loading="lazy"
       style={{
         border: "none",

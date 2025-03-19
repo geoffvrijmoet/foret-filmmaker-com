@@ -1,27 +1,46 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
+
+const navItems = [
+  {
+    title: "HOME",
+    href: "/",
+  },
+  {
+    title: "MY WORK",
+    href: "/my-work",
+  },
+  {
+    title: "CONTACT",
+    href: "/contact",
+  },
+];
 
 export function MainNav() {
-  const items = [
-    { title: "HOME", href: "/" },
-    { title: "MY WORK", href: "/my-work" },
-    { title: "CONTACT", href: "/contact" },
-  ];
-
   return (
-    <div className="w-full">
-      <nav className="flex w-full justify-between">
-        {items.map((item) => (
+    <nav className="flex items-center justify-center w-full space-x-24">
+      {navItems.map((item, index) => (
+        <motion.div
+          key={item.href}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [0, 1, 0, 1, 0, 1, 0, 1] }}
+          transition={{ 
+            duration: 0.2,
+            delay: index * 0.15 - 0.1,
+            times: [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1],
+            ease: "linear"
+          }}
+        >
           <Link
-            key={item.href}
             href={item.href}
-            className="flex-1 text-center text-lg font-extralight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-12 flex items-center justify-center"
+            className="text-sm font-medium transition-colors hover:text-primary"
           >
             {item.title}
           </Link>
-        ))}
-      </nav>
-    </div>
+        </motion.div>
+      ))}
+    </nav>
   );
 }

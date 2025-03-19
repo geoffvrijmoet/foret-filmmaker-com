@@ -2,9 +2,15 @@ import { ClerkProvider } from '@clerk/nextjs'
 import { UserButton } from "@clerk/nextjs";
 import { MainNav } from "@/components/main-nav";
 import { MobileNav } from "@/components/mobile-nav";
-import { exo } from './fonts'
+import { Montserrat } from 'next/font/google'
 import './globals.css'
 import { Footer } from "@/components/footer";
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+  weight: ['400', '500', '600', '700'],
+})
 
 export default function RootLayout({
   children,
@@ -14,10 +20,10 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${exo.className} ${exo.variable}`}>
+        <body className={`${montserrat.className} ${montserrat.variable} font-medium`}>
           <div className="mx-6 sm:mx-8">
             <nav>
-              <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+              <header className="sticky top-0 z-50 w-full">
                 <div className="flex h-14 items-center relative">
                   <MainNav />
                   <MobileNav className="md:hidden" />
