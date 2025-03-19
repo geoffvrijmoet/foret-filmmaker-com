@@ -36,7 +36,7 @@ export function MainNav() {
         >
           <Link
             href={item.href}
-            className="text-sm font-medium relative px-2 py-1 hover:text-black hover:before:absolute hover:before:inset-0 hover:before:bg-[#d3d6e8f6] hover:before:z-[-1] hover:before:transition-all hover:before:duration-100 hover:before:origin-left hover:before:scale-x-100 before:scale-x-0 before:origin-left before:transition-all before:duration-100"
+            className="text-white text-sm font-medium relative px-2 py-1 hover:text-black hover:before:absolute hover:before:inset-0 hover:before:bg-[#d3d6e8f6] hover:before:z-[-1] hover:before:transition-all hover:before:duration-100 hover:before:origin-left hover:before:scale-x-100 before:scale-x-0 before:origin-left before:transition-all before:duration-100"
           >
             {item.title}
           </Link>

@@ -5,12 +5,18 @@ import { MobileNav } from "@/components/mobile-nav";
 import { Montserrat } from 'next/font/google'
 import './globals.css'
 import { Footer } from "@/components/footer";
+import type { Metadata } from "next";
 
 const montserrat = Montserrat({
   subsets: ['latin'],
   variable: '--font-montserrat',
   weight: ['400', '500', '600', '700'],
 })
+
+export const metadata: Metadata = {
+  title: "Foret Filmmaker",
+  description: "Portfolio of video work by Foret Filmmaker",
+};
 
 export default function RootLayout({
   children,
