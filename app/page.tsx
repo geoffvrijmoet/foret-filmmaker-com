@@ -25,8 +25,11 @@ interface PortfolioVideo {
   videoId: string;
 }
 
-// Dynamically import the video component for better performance
+// Dynamically import the video components for better performance
 const VideoPlayer = dynamic(() => import("@/components/video-player"), {
+  ssr: false,
+});
+const MainVideoPlayer = dynamic(() => import("@/components/main-video-player"), {
   ssr: false,
 });
 
@@ -142,7 +145,7 @@ export default function HomePage() {
         <div className="w-full max-w-[1080px]">
           <div className="relative w-full pt-[56.25%]">
             <div className="absolute top-0 left-0 w-full h-full">
-              <VideoPlayer videoId={mainVideoId} />
+              <MainVideoPlayer videoId={mainVideoId} />
             </div>
           </div>
         </div>
