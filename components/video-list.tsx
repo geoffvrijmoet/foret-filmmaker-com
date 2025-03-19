@@ -8,25 +8,29 @@ interface VideoListProps {
 }
 
 export default function VideoList({ videos }: VideoListProps) {
+  // Filter out videos without fullVideoId and deduplicate based on fullVideoId
+  const filteredVideos = videos
+    .filter((video): video is IVideo & { fullVideoId: string } => Boolean(video.fullVideoId))
+    .filter((video, index, self) => 
+      index === self.findIndex((v) => v.fullVideoId === video.fullVideoId)
+    );
+
   return (
-    <div className="grid grid-cols-1 gap-8">
-      {videos.map((video) => (
+    <div className="grid grid-cols-1 gap-4 max-w-[2000px] mx-auto">
+      {filteredVideos.map((video) => (
         <div 
           key={video._id} 
           id={video._id}
-          className="space-y-4 scroll-mt-24"
+          className="w-full"
         >
-          <h2 className="text-2xl font-bold">{video.title}</h2>
-          {video.description && (
-            <p className="text-gray-600">{video.description}</p>
-          )}
-          <div className="aspect-video">
-            {video.fullVideoId && (
-              <VideoPlayer
-                videoId={video.fullVideoId}
-                className="w-full h-full"
-              />
-            )}
+          <div className="p-2 font-mono text-xs text-gray-400">
+            ID: {video.fullVideoId}
+          </div>
+          <div className="aspect-video w-full">
+            <VideoPlayer
+              videoId={video.fullVideoId}
+              className="w-full h-full"
+            />
           </div>
         </div>
       ))}

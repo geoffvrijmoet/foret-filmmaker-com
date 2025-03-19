@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function ContactPage() {
   const [name, setName] = useState("");
@@ -42,6 +44,14 @@ export default function ContactPage() {
 
   return (
     <div className="max-w-4xl mx-auto">
+      <div className="mb-8">
+        <Link href="/">
+          <Button variant="outline" className="text-white hover:text-black">
+            ← Back to Home
+          </Button>
+        </Link>
+      </div>
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
