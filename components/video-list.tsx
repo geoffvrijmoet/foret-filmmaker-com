@@ -23,9 +23,6 @@ export default function VideoList({ videos }: VideoListProps) {
           id={video._id}
           className="w-full"
         >
-          <div className="p-2 font-mono text-xs text-gray-400">
-            ID: {video.fullVideoId}
-          </div>
           <div className="aspect-video w-full">
             <VideoPlayer
               videoId={video.fullVideoId}
