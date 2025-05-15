@@ -12,12 +12,12 @@ import {
 export function MobileNav({ className }: { className?: string }) {
   const items = [
     {
-      title: "Editing Reel",
-      href: "/editing-reel",
+      title: "Home",
+      href: "/",
     },
     {
-      title: "Portfolio",
-      href: "/portfolio",
+      title: "About",
+      href: "/about",
     },
     {
       title: "Contact",

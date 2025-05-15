@@ -12,7 +12,7 @@ interface NavWrapperProps {
 
 export default function NavWrapper({ children }: NavWrapperProps) {
   const pathname = usePathname();
-  const showNav = pathname === '/' || pathname.startsWith('/my-work');
+  const showNav = pathname === '/' || pathname.startsWith('/about');
 
   return (
     <div className="mx-6 sm:mx-8">
