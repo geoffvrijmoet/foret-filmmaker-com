@@ -53,3 +53,12 @@ He's currently crafting a feature drama, To Be Declared Undead, where the lines 
 #follow-up: After creating the About page, the navigation bar wasn't showing on the About page. Why?
 
 #answer: The navigation visibility was conditional based on the current path in the NavWrapper component. The condition was checking for paths that were either the home page ('/') or started with '/my-work'. Since we changed the route to '/about', I updated the condition in components/nav-wrapper.tsx to show the navigation when the path starts with '/about' instead of '/my-work'. This fixed the issue and now the navigation bar properly appears on the About page.
+
+#question: The homepage portfolio grid shows "404 not found" errors for some videos. How can we fix this?
+
+#answer: This issue was caused by videos in the database that had missing or invalid Cloudflare Stream IDs. I modified the homepage (app/page.tsx) to filter out any videos that don't have valid bannerVideoId values before displaying them in the grid. The validation checks if:
+1. The bannerVideoId exists (not null or undefined)
+2. It's a string type
+3. It's not an empty string after trimming whitespace
+
+This filtering prevents the 404 errors by ensuring only videos with properly formatted IDs are displayed on the page, improving the user experience.

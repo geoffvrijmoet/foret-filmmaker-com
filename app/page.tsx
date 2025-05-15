@@ -66,6 +66,13 @@ export default function HomePage() {
 
   // Always use the hardcoded main video ID
   const mainVideoId = "486ad295feb60d67e77f2a77d09c04c8";
+  
+  // Filter videos that have valid bannerVideoId (not empty, null, or undefined)
+  const validVideos = videos.filter(video => 
+    video.bannerVideoId && 
+    typeof video.bannerVideoId === 'string' && 
+    video.bannerVideoId.trim() !== ''
+  );
 
   return (
     <div className="space-y-24">
@@ -81,8 +88,8 @@ export default function HomePage() {
       <div className="space-y-8 relative pt-[56.25vw]">
         {/* Portfolio Video Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-0 max-w-7xl mx-auto px-4">
-          {videos.length > 0 ? (
-            videos.map((video) => (
+          {validVideos.length > 0 ? (
+            validVideos.map((video) => (
               <div 
                 key={video._id} 
                 className="aspect-video relative rounded-none overflow-hidden group"
